@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ryan Zurich – Voice Actor</title>
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C97A;
+      --dark: #0D0D0D;
+      --dark2: #161616;
+      --dark3: #1F1F1F;
+      --dark4: #2A2A2A;
+      --muted: #888;
+      --text: #E8E4DC;
+      --text-soft: #B0A898;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--dark);
+      color: var(--text);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 4rem;
+      background: rgba(13,13,13,0.95);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .nav-logo { font-size: 1.2rem; color: var(--gold); letter-spacing: 0.05em; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: var(--text-soft); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; font-family: Arial, sans-serif; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+
+    #hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      padding: 8rem 2rem 4rem;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.07) 0%, transparent 70%);
+    }
+    .hero-tag { font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; font-family: Arial, sans-serif; color: var(--gold); margin-bottom: 1.5rem; }
+    .hero-name { font-size: clamp(3rem, 8vw, 6.5rem); line-height: 1.05; margin-bottom: 1.25rem; }
+    .hero-name em { color: var(--gold); font-style: italic; }
+    .hero-sub { font-size: 1rem; color: var(--text-soft); max-width: 520px; margin: 0 auto 2.5rem; font-family: Arial, sans-serif; }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .btn-primary { background: var(--gold); color: #0D0D0D; font-family: Arial, sans-serif; font-weight: bold; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.9rem 2.2rem; border: none; border-radius: 2px; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s; }
+    .btn-primary:hover { background: var(--gold-light); }
+    .btn-outline { background: transparent; color: var(--text-soft); font-family: Arial, sans-serif; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.9rem 2.2rem; border: 1px solid rgba(201,168,76,0.4); border-radius: 2px; cursor: pointer; text-decoration: none; display: inline-block; transition: color 0.2s, border-color 0.2s; }
+    .btn-outline:hover { color: var(--gold); border-color: var(--gold); }
+
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 6rem 2rem; }
+    .s-label { font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; font-family: Arial, sans-serif; color: var(--gold); margin-bottom: 0.75rem; }
+    .s-title { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; margin-bottom: 1.5rem; }
+    .g-line { width: 48px; height: 2px; background: var(--gold); margin-bottom: 2.5rem; }
+    hr.divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); max-width: 1100px; margin: 0 auto; }
+
+    .about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; }
+    .about-photo img { width: 100%; display: block; border: 1px solid rgba(201,168,76,0.2); }
+    .about-text p { color: var(--text-soft); margin-bottom: 1.25rem; font-size: 0.95rem; font-family: Arial, sans-serif; }
+    .stats { display: flex; gap: 3rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.07); }
+    .sn { font-size: 2.2rem; color: var(--gold); display: block; }
+    .sl { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; font-family: Arial, sans-serif; color: var(--muted); }
+
+    .demos-bg { background: var(--dark2); padding: 6rem 2rem; }
+    .demos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .d-card { background: var(--dark3); border: 1px solid rgba(255,255,255,0.06); border-radius: 4px; padding: 1.75rem; transition: border-color 0.25s, transform 0.2s; position: relative; overflow: hidden; }
+    .d-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--gold); transition: height 0.3s; }
+    .d-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-2px); }
+    .d-card:hover::before { height: 100%; }
+    .d-genre { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; font-family: Arial, sans-serif; color: var(--gold); margin-bottom: 0.5rem; }
+    .d-title { font-size: 1.2rem; margin-bottom: 0.4rem; }
+    .d-desc { font-size: 0.85rem; font-family: Arial, sans-serif; color: var(--text-soft); margin-bottom: 1.25rem; line-height: 1.6; }
+    audio { width: 100%; accent-color: var(--gold); margin-top: 0.25rem; }
+
+    .svc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
+    .svc { background: var(--dark3); border: 1px solid rgba(255,255,255,0.05); border-radius: 4px; padding: 1.75rem 1.5rem; transition: border-color 0.2s; }
+    .svc:hover { border-color: rgba(201,168,76,0.3); }
+    .svc-icon { font-size: 1.6rem; margin-bottom: 1rem; display: block; }
+    .svc-name { font-size: 1.05rem; margin-bottom: 0.5rem; }
+    .svc-desc { font-size: 0.83rem; font-family: Arial, sans-serif; color: var(--text-soft); line-height: 1.65; }
+
+    .proc-bg { background: var(--dark2); padding: 6rem 2rem; }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 3rem; position: relative; }
+    .steps::before { content: ''; position: absolute; top: 22px; left: 10%; right: 10%; height: 1px; background: rgba(201,168,76,0.2); z-index: 0; }
+    .step { text-align: center; padding: 0 1.5rem; position: relative; z-index: 1; }
+    .snum { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--gold); background: var(--dark2); display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--gold); margin: 0 auto 1rem; }
+    .stitle { font-size: 1rem; margin-bottom: 0.4rem; }
+    .sdesc { font-size: 0.8rem; font-family: Arial, sans-serif; color: var(--text-soft); line-height: 1.6; }
+
+    .tgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .tcard { background: var(--dark3); border: 1px solid rgba(255,255,255,0.05); border-radius: 4px; padding: 2rem 1.75rem; }
+    .tq { font-size: 0.9rem; font-family: Arial, sans-serif; color: var(--text-soft); line-height: 1.75; margin-bottom: 1.5rem; font-style: italic; }
+    .ta { font-size: 0.8rem; font-family: Arial, sans-serif; font-weight: bold; color: var(--text); }
+    .tr { font-size: 0.75rem; font-family: Arial, sans-serif; color: var(--gold); margin-top: 0.2rem; }
+    .stars { color: var(--gold); font-size: 0.75rem; margin-bottom: 1rem; }
+
+    .ctact-bg { background: var(--dark2); padding: 6rem 2rem; text-align: center; }
+    .ctact-in { max-width: 700px; margin: 0 auto; }
+    .cemail { display: inline-block; font-size: 1.4rem; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,168,76,0.3); padding-bottom: 4px; margin: 2rem 0; transition: border-color 0.2s; }
+    .cemail:hover { border-color: var(--gold); }
+    .socials { display: flex; gap: 1.5rem; justify-content: center; margin-top: 2rem; }
+    .soc { width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; color: var(--text-soft); font-size: 0.75rem; font-family: Arial, sans-serif; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+    .soc:hover { border-color: var(--gold); color: var(--gold); }
+    .cnote { font-size: 0.8rem; font-family: Arial, sans-serif; color: var(--muted); margin-top: 1.5rem; }
+
+    footer { text-align: center; padding: 2.5rem; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.78rem; font-family: Arial, sans-serif; color: var(--muted); }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    .ph { background: rgba(201,168,76,0.12); border: 1px dashed rgba(201,168,76,0.4); border-radius: 2px; padding: 0.1em 0.4em; color: #E8C97A; font-style: italic; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .steps::before { display: none; }
+      .stats { flex-wrap: wrap; gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Ryan Zurich</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#demos">Demos</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-tag">Voice Actor &nbsp;·&nbsp; <span class="ph">A Strong Narrative Voice</span></p>
+  <h1 class="hero-name">The Voice Behind<br><em>Your Story.</em></h1>
+  <p class="hero-sub"><span class="ph">A strong, resounding voice that hooks your audience in seconds</span></p>
+  <div class="hero-ctas">
+    <a href="#demos" class="btn-primary">Hear My Work</a>
+    <a href="#contact" class="btn-outline">Book a Session</a>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ABOUT -->
+<div class="wrap" id="about">
+  <div class="about-grid">
+
+    <div class="about-photo">
+      <!--
+        PHOTO INSTRUCTIONS:
+        Save your photo as "ryan.jpg" in the same folder as this HTML file.
+        The line below will display it automatically.
+      -->
+      <img src="ryan.jpg" alt="Ryan Zurich – Voice Actor"/>
+    </div>
+
+    <div class="about-text">
+      <p class="s-label">About Me</p>
+      <h2 class="s-title">Ryan Zurich</h2>
+      <div class="g-line"></div>
+      <p><span class="ph">Ryan Zurich is a Film & TV BFA Major at Montclair State, and has been trained by some of the best acting teachers in the country</span></p>
+      <p><span class="ph">I have a deep, strong voice that can capture the essence of a main protagonist to a tea.</span></p>
+      <p><span class="ph">I have starred in multiple short films, audiobooks, and directed my own productions</p>
+      <div class="stats">
+        <div><span class="sn"><span class="ph">67</span>+</span><span class="sl">Projects</span></div>
+        <div><span class="sn"><span class="ph">67</span>+</span><span class="sl">Clients</span></div>
+        <div><span class="sn"><span class="ph">5</span>+</span><span class="sl">Years</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- DEMOS -->
+<div id="demos" class="demos-bg">
+  <div style="max-width:1100px;margin:0 auto;">
+    <p class="s-label">Listen</p>
+    <h2 class="s-title">Demo Reels</h2>
+    <div class="g-line"></div>
+    <div class="demos-grid">
+
+      <!-- SCI-FI DEMO -->
+      <div class="d-card">
+        <p class="d-genre">Sci-Fi</p>
+        <h3 class="d-title">Sci-Fi Male</h3>
+        <p class="d-desc">A deep, commanding voice built for futuristic worlds — perfect for video games, trailers, and science fiction audiobooks.</p>
+        <!--
+          AUDIO INSTRUCTIONS:
+          Save "SciFi_Male.mp3" in the same folder as this HTML file.
+          The player below will work automatically.
+        -->
+        <audio controls>
+          <source src="SciFi_Male.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+
+      <!-- FANTASY DEMO -->
+      <div class="d-card">
+        <p class="d-genre">Fantasy</p>
+        <h3 class="d-title">Fantasy Male</h3>
+        <p class="d-desc">Rich, expressive character work suited for epic fantasy narratives, RPG characters, and immersive audiobook performances.</p>
+        <!--
+          AUDIO INSTRUCTIONS:
+          Save "Fantasy_Male.mp3" in the same folder as this HTML file.
+        -->
+        <audio controls>
+          <source src="Fantasy_Male.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+
+      
+      <div class="d-card">
+        <p class="d-genre"><span class="ph">Action</span></p>
+        <h3 class="d-title"><span class="ph">Anti-hero Male</span></h3>
+        <p class="d-desc"><span class="ph">Cold, dark character work that sends chills down your audience spine</span></p>
+        <audio controls>
+          <source src="Superhero_Male.wav" type="audio/mpeg">
+        </audio>
+      </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- SERVICES -->
+<div class="wrap" id="services">
+  <p class="s-label">What I Offer</p>
+  <h2 class="s-title">Services</h2>
+  <div class="g-line"></div>
+  <p style="color:var(--text-soft);max-width:580px;font-size:0.95rem;font-family:Arial,sans-serif;">
+    <span class="ph">Always Open to Working With:</span>
+  </p>
+  <div class="svc-grid">
+    <div class="svc"><span class="svc-icon">&#127918;</span><h3 class="svc-name">Video Games</h3><p class="svc-desc"><span class="ph">Let me star in a world where millions can explore</span></p></div>
+    <div class="svc"><span class="svc-icon">&#128218;</span><h3 class="svc-name">Audiobooks</h3><p class="svc-desc"><span class="ph">I can bring the pages of a book to life, and help the audience truly feel the story</span></p></div>
+    <div class="svc"><span class="svc-icon">&#127909;</span><h3 class="svc-name">Trailers &amp; Promos</h3><p class="svc-desc"><span class="ph">Epic trailer narration? I'm your guy</span></p></div>
+    <div class="svc"><span class="svc-icon">&#127908;</span><h3 class="svc-name">Commercial</h3><p class="svc-desc"><span class="ph">Promote your product/business with the consumer-whisperer</span></p></div>
+    <div class="svc"><span class="svc-icon">&#128251;</span><h3 class="svc-name">Narration</h3><p class="svc-desc"><span class="ph">Got a nature documentary? Krike! I can take care of that</span></p></div>
+</div>
+
+<hr class="divider"/>
+
+<!-- PROCESS -->
+<div id="process" class="proc-bg">
+  <div style="max-width:1100px;margin:0 auto;">
+    <p class="s-label">How It Works</p>
+    <h2 class="s-title">My Process</h2>
+    <div class="g-line"></div>
+    <div class="steps">
+      <div class="step"><div class="snum">1</div><h4 class="stitle">Connect</h4><p class="sdesc"></p></div>
+      <div class="step"><div class="snum">2</div><h4 class="stitle">Scope &amp; Quote</h4><p class="sdesc"></p></div>
+      <div class="step"><div class="snum">3</div><h4 class="stitle">Record</h4><p class="sdesc"></p></div>
+      <div class="step"><div class="snum">4</div><h4 class="stitle">Deliver</h4><p class="sdesc"></p></div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- TESTIMONIALS -->
+<div class="wrap" id="testimonials">
+  <p class="s-label">Kind Words</p>
+  <h2 class="s-title">Testimonials</h2>
+  <div class="g-line"></div>
+  <div class="tgrid">
+    <div class="tcard"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="tq"><span class="ph">The greatest student I've ever had! Nobody does it like Ryan. Greatest narrator ever, and it's not just me saying it!</span></p><p class="ta"><span class="ph">Khristine Hvam</span></p><p class="tr"><span class="ph">Professor, Montclair State University</span></p></div>
+    <div class="tcard"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="tq"><span class="ph">The second Ryan started talking I couldn't pay attention to anything else. His voice is like hearing the birds chirp on a beautiful spring day. Simply could not get enough.</span></p><p class="ta"><span class="ph">Will Lanza</span></p><p class="tr"><span class="ph">Just a chill dude</span></p></div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- CONTACT -->
+<div id="contact" class="ctact-bg">
+  <div class="ctact-in">
+    <p class="s-label">Get in Touch</p>
+    <h2 class="s-title">Let's Work Together</h2>
+    <div class="g-line" style="margin:0 auto 2rem;"></div>
+    <p style="color:var(--text-soft);font-size:0.95rem;font-family:Arial,sans-serif;"><span class="ph">Will get back to you within 24 hours</span></p>
+    <a class="cemail" href="mailto:ryanjzurich@gmail.com"><span class="ph">[ ryanjzurich@gmail.com ]</span></a>
+    <br/>
+    <a href="mailto:ryanjzurich@gmail.com" class="btn-primary" style="margin-top:0.5rem;">Book a Session</a>
+   <!-- Replace your current socials section with this -->
+
+<div class="socials">
+  <!-- LINKEDIN -->
+  <!-- Replace the # with your real LinkedIn profile link -->
+  <a 
+    href="https://www.linkedin.com/in/ryan-zurich-8aa666246/" 
+    class="soc" 
+    title="LinkedIn"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    in
+  </a>
+
+  <!-- INSTAGRAM -->
+  <!-- Replace the # with your real Instagram profile link -->
+  <a 
+    href="https://www.instagram.com/ryanzurichhh/" 
+    class="soc" 
+    title="Instagram"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    IG
+  </a>
+</div>
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 Ryan Zurich &nbsp;·&nbsp; Voice Actor &nbsp;·&nbsp; <a href="mailto:your@email.com"><span class="ph">[ ryanjzurich@gmail.com ]</span></a></p>
+</footer>
+
+</body>
+</html>
